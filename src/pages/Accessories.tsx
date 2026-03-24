@@ -15,7 +15,6 @@ import CategoryFilters from '@/components/sections/CategoryFilters';
 import { fetchProducts, type Product, type ProductQuery } from '@/lib/api';
 
 const Accessories = () => {
-const Accessories = () => {
   const accessories = [
     { name: 'Pufferfish', image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?auto=format&fit=crop&w=400&h=400', count: '15+ items' },
     { name: 'Seahorses', image: 'https://images.unsplash.com/photo-1583086747676-203a5ae95055?auto=format&fit=crop&w=400&h=400', count: '12+ items' },
@@ -206,6 +205,5 @@ const Accessories = () => {
     </div>
   );
 }
-;
 
 export default Accessories;

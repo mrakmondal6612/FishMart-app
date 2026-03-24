@@ -18,18 +18,25 @@ export default defineConfig(({ mode }) => {
       chunkSizeWarningLimit: 1024,
       rollupOptions: {
         output: {
-          manualChunks: {
-            react: ['react', 'react-dom'],
-            router: ['react-router', 'react-router-dom'],
-            tanstack: ['@tanstack/react-query'],
-            ui: [
-              '@radix-ui/react-dropdown-menu',
-              '@radix-ui/react-dialog',
-              '@radix-ui/react-tooltip',
-              '@radix-ui/react-slot'
-            ],
-            charts: ['recharts'],
-            supabase: ['@supabase/supabase-js']
+          manualChunks: (id) => {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'react';
+            }
+            if (id.includes('react-router') || id.includes('react-router-dom')) {
+              return 'router';
+            }
+            if (id.includes('@tanstack/react-query')) {
+              return 'tanstack';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'ui';
+            }
+            if (id.includes('recharts')) {
+              return 'charts';
+            }
+            if (id.includes('@supabase/supabase-js')) {
+              return 'supabase';
+            }
           }
         }
       }
