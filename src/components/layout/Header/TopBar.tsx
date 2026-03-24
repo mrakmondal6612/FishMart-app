@@ -66,7 +66,7 @@ export const TopBar = () => {
             <Link 
               key={route}
               to={`/${route}`}
-              className={`flex-1 md:flex-none min-w-[100px] md:min-w-0 md:w-auto px-1 border-x border-transparent md:border-cyan-500/30 transition-all duration-300 hover:scale-105 smooth-transition ${
+              className={`flex-1 md:flex-none min-w-[100px] md:min-w-0 md:w-auto px-4 border-x border-transparent md:border-cyan-500/30 transition-all duration-300 hover:scale-105 smooth-transition ${
                 activeTab === route 
                   ? 'bg-gradient-to-b from-cyan-400 to-teal-400 text-slate-900 transform scale-105 shadow-glow-cyan' 
                   : 'text-cyan-100 hover:text-cyan-50 hover:bg-teal-900/40 hover:shadow-glow-cyan'

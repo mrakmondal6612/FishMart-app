@@ -153,112 +153,98 @@ export const Footer = () => {
       </div> */}
       {/* <Newsletter /> */}
 
-      {/* Footer Links Section */}
-      <div className="bg-gradient-to-r from-slate-900 via-teal-900 to-slate-900 w-full text-cyan-50 border-t border-cyan-500/20 shadow-elevated">
-        <div className="max-w-[1200px] mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Exclusive Column */}
-            <div className="space-y-4 group">
-              <h3 className="text-2xl font-bold gradient-text-cyan-teal">{footerData.exclusive?.title || 'Exclusive'}</h3>
-              <h4 className="text-lg font-medium text-cyan-200 group-hover:text-cyan-100 transition-colors">{footerData.exclusive?.subtitle || 'Subscribe'}</h4>
-              <p className="text-cyan-100/70 group-hover:text-cyan-100 transition-colors">{footerData.exclusive?.note || 'Get 10% off your first order'}</p>
-              {isSubscribed ? (
-                <div className="bg-green-500/20 text-green-300 p-3 rounded-lg flex items-center gap-2 border border-green-500/30 backdrop-blur-sm">
-                  <CheckCircle className="w-5 h-5" />
-                  <span>Thank you for subscribing!</span>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="flex border-2 border-cyan-400/40 rounded-lg overflow-hidden glass-effect backdrop-blur-sm hover:border-cyan-400/60 transition-colors">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="bg-cyan-500/10 text-white p-3 w-full outline-none placeholder-cyan-200/50 hover:bg-cyan-500/20 transition-colors"
-                    required
-                  />
-                  <button 
-                    type="submit" 
-                    className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-4 hover:shadow-glow-cyan transition-all font-semibold"
-                    disabled={!email}
-                  >
-                    <Send className="w-5 h-5" />
-                  </button>
-                </form>
-              )}
+      {/* Main Footer Content */}
+      <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-teal-950 w-full relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 80% 80%, rgba(20, 184, 166, 0.3) 0%, transparent 50%),
+                            radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.2) 0%, transparent 50%)`
+          }}></div>
+        </div>
+        
+        <div className="relative max-w-[1400px] mx-auto px-6 py-16">
+          {/* Top Section with Newsletter */}
+          <div className="bg-gradient-to-r from-cyan-500/10 to-teal-500/10 backdrop-blur-sm border border-cyan-500/20 rounded-2xl p-8 mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-bold text-white">Stay Connected</h2>
+                <p className="text-cyan-100/70">Get exclusive offers and be the first to know about new arrivals</p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="flex-1 bg-slate-800/50 border border-cyan-500/30 rounded-xl px-4 py-3 text-white placeholder-cyan-100/40 focus:outline-none focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20 transition-all"
+                  required
+                />
+                <button 
+                  onClick={handleSubmit}
+                  className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled={!email}
+                >
+                  {isSubscribed ? 'Subscribed ✓' : 'Subscribe'}
+                </button>
+              </div>
             </div>
+          </div>
 
-            {/* Support Column */}
-            <div className="group">
-              <h3 className="text-xl font-semibold mb-6 text-cyan-200 group-hover:text-cyan-100 transition-colors">Support</h3>
-              <address className="not-italic space-y-4">
-                <div className="flex items-start gap-3 group-hover:text-cyan-100 transition-colors">
-                  <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 text-cyan-400" />
-                  <p className="text-cyan-100/70">
-                    {footerData.contactInfo?.address
-                      ? footerData.contactInfo.address.split('\n').map((line, i) => (
-                          <React.Fragment key={i}>{line}<br/></React.Fragment>
-                        ))
-                      : (
-                        <>
-                          429/1, R.B AVENUE, Bhadreswar<br />Hooghly - 712124<br />West Bengal, India
-                        </>
-                      )}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 text-cyan-100/70 hover:text-cyan-100 transition-colors">
-                  <Mail className="w-5 h-5 flex-shrink-0 text-cyan-400" />
-                  <a href={`mailto:${footerData.contactInfo?.email || 'contact@zixxapp.com'}`} className="hover:text-cyan-300 transition-colors">{footerData.contactInfo?.email || 'contact@zixxapp.com'}</a>
-                </div>
-                <div className="flex items-center gap-3 text-cyan-100/70 hover:text-cyan-100 transition-colors">
-                  <Phone className="w-5 h-5 flex-shrink-0 text-cyan-400" />
-                  <a href={`tel:${footerData.contactInfo?.phone || '+918962231295'}`} className="hover:text-cyan-300 transition-colors">{footerData.contactInfo?.phone || '+91 89622 31295'}</a>
-                </div>
-                <div className="flex items-center gap-3 text-cyan-100/70 hover:text-cyan-100 transition-colors">
-                  <Clock className="w-5 h-5 flex-shrink-0 text-cyan-400" />
-                  <p>Mon-Sat: 9:00 AM - 6:00 PM</p>
-                </div>
-              </address>
-            </div>
-
-            {/* Account Column */}
-            <div className="group">
-              <h3 className="text-xl font-semibold mb-6 text-cyan-200 group-hover:text-cyan-100 transition-colors">Account</h3>
-                <ul className="space-y-3">
-                  {(footerData.accountLinks && footerData.accountLinks.length > 0 ? footerData.accountLinks : [
-                    { to: '/account', label: 'My Account' },
-                    { to: '/auth', label: 'Login / Register' },
-                    { to: '/cart', label: 'Cart' },
-                    { to: '/wishlist', label: 'Wishlist' },
-                    { to: '/shop', label: 'Shop' }
-                  ]).map((link, idx) => (
-                    <li key={link.url || link.to || idx}>
-                      <Link 
-                        to={link.url || link.to || '#'} 
-                        className={`transition-all duration-300 hover:text-cyan-300 hover:translate-x-1 ${activeLink === (link.url || link.to) ? 'text-cyan-300 font-semibold' : 'text-cyan-100/70'}`}
-                      >
-                        {link.title || link.label}
-                      </Link>
-                    </li>
+          {/* Main Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+            {/* Brand Column */}
+            <div className="lg:col-span-2 space-y-6">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-bold text-white">FishMart</h3>
+                <p className="text-cyan-100/70 leading-relaxed max-w-sm">
+                  Your trusted destination for premium aquatic life. Discover our curated collection of freshwater, saltwater, and brackish fish species.
+                </p>
+              </div>
+              
+              {/* Social Media */}
+              <div className="space-y-3">
+                <h4 className="text-sm font-semibold text-cyan-100/80 uppercase tracking-wider">Follow Us</h4>
+                <div className="flex gap-3">
+                  {[
+                    { icon: Facebook, label: 'Facebook', url: footerData.socialLinks?.facebook },
+                    { icon: Twitter, label: 'Twitter', url: footerData.socialLinks?.twitter },
+                    { icon: Instagram, label: 'Instagram', url: footerData.socialLinks?.instagram },
+                    { icon: Linkedin, label: 'LinkedIn', url: footerData.socialLinks?.linkedin }
+                  ].map(({ icon: Icon, label, url }) => (
+                    <a
+                      key={label}
+                      href={url || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="w-10 h-10 bg-slate-800/50 border border-cyan-500/20 hover:border-cyan-400/60 hover:bg-cyan-500/20 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-cyan-500/25"
+                    >
+                      <Icon className="w-5 h-5 text-cyan-400" />
+                    </a>
                   ))}
-                </ul>
+                </div>
+              </div>
             </div>
 
-            {/* Quick Link Column */}
-            <div className="group">
-              <h3 className="text-xl font-semibold mb-6 text-cyan-200 group-hover:text-cyan-100 transition-colors">Quick Link</h3>
+            {/* Quick Links */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-white">Quick Links</h3>
               <ul className="space-y-3">
                 {[
-                  { to: '/privacy-policy', label: 'Privacy Policy' },
-                  { to: '/terms', label: 'Terms Of Use' },
-                  // { to: '/webhooks', label: 'Webhooks' },
-                  { to: '/faq', label: 'FAQ' },
-                  { to: '/contact', label: 'Contact Us' }
+                  { to: '/shop', label: 'Shop All' },
+                  { to: '/freshwater', label: 'Freshwater Fish' },
+                  { to: '/saltwater', label: 'Saltwater Fish' },
+                  { to: '/brackish', label: 'Brackish Fish' },
+                  { to: '/accessories', label: 'Accessories' }
                 ].map(({ to, label }) => (
                   <li key={to}>
                     <Link 
                       to={to} 
-                      className={`transition-all duration-300 hover:text-cyan-300 hover:translate-x-1 ${activeLink === to ? 'text-cyan-300 font-semibold' : 'text-cyan-100/70'}`}
+                      className={`text-cyan-100/70 hover:text-cyan-300 transition-all duration-300 hover:translate-x-1 inline-block ${
+                        activeLink === to ? 'text-cyan-300 font-medium' : ''
+                      }`}
                     >
                       {label}
                     </Link>
@@ -266,101 +252,93 @@ export const Footer = () => {
                 ))}
               </ul>
             </div>
-          </div>
 
-          {/* Social Media */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 mt-12 mb-10 pt-8 border-t border-cyan-500/20">
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-cyan-100/70">Follow us:</span>
-              <div className="flex gap-4">
+            {/* Customer Service */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-white">Customer Service</h3>
+              <ul className="space-y-3">
                 {[
-                  { icon: Facebook, label: 'Facebook', url: footerData.socialLinks?.facebook },
-                  { icon: Twitter, label: 'Twitter', url: footerData.socialLinks?.twitter },
-                  { icon: Instagram, label: 'Instagram', url: footerData.socialLinks?.instagram },
-                  { icon: Linkedin, label: 'LinkedIn', url: footerData.socialLinks?.linkedin }
-                ].map(({ icon: Icon, label, url }) => (
-                  <a
-                    key={label}
-                    href={url || '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="p-2.5 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-400/30 hover:border-cyan-400/60 hover:shadow-glow-cyan hover:-translate-y-1 hover:bg-cyan-500/30 rounded-full transition-all duration-300"
-                  >
-                    <Icon className="w-5 h-5 text-cyan-300 hover:text-cyan-100" />
-                  </a>
+                  { to: '/contact', label: 'Contact Us' },
+                  { to: '/faq', label: 'FAQ' },
+                  { to: '/shipping', label: 'Shipping Info' },
+                  { to: '/returns', label: 'Returns' },
+                  { to: '/track-order', label: 'Track Order' }
+                ].map(({ to, label }) => (
+                  <li key={to}>
+                    <Link 
+                      to={to} 
+                      className={`text-cyan-100/70 hover:text-cyan-300 transition-all duration-300 hover:translate-x-1 inline-block ${
+                        activeLink === to ? 'text-cyan-300 font-medium' : ''
+                      }`}
+                    >
+                      {label}
+                    </Link>
+                  </li>
                 ))}
-                {/* Extra social links */}
-                {(footerData.socialLinksExtra || []).map((s, i) => (
-                  <a key={`extra-${i}`} href={s.url || '#'} target="_blank" rel="noopener noreferrer" aria-label={s.label || `social-${i}`} className="p-2.5 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-400/30 hover:border-cyan-400/60 hover:shadow-glow-cyan hover:-translate-y-1 hover:bg-cyan-500/30 rounded-full transition-all duration-300">
-                    <span className="sr-only">{s.label}</span>
-                    <svg className="w-5 h-5 text-cyan-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10" /></svg>
-                  </a>
-                ))}
-              </div>
+              </ul>
             </div>
 
-            {/* <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="bg-black/20 hover:bg-black/30 px-3 py-1.5 rounded-md text-sm font-medium transition-colors"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toast({
-                    title: 'Coming Soon!',
-                    description: 'Our mobile app will be available soon.'
-                  });
-                }}
-              >
-                App Store
-              </a>
-              <a
-                href="#"
-                className="bg-black/20 hover:bg-black/30 px-3 py-1.5 rounded-md text-sm font-medium transition-colors"
-                onClick={(e) => {
-                  e.preventDefault();
-                  toast({
-                    title: 'Coming Soon!',
-                    description: 'Our mobile app will be available soon.'
-                  });
-                }}
-              >
-                Google Play
-              </a>
-            </div> */}
+            {/* Contact Info */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-white">Get in Touch</h3>
+              <address className="not-italic space-y-4">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 text-cyan-400" />
+                  <p className="text-cyan-100/70 text-sm leading-relaxed">
+                    {footerData.contactInfo?.address
+                      ? footerData.contactInfo.address.split('\n').map((line, i) => (
+                          <React.Fragment key={i}>{line}<br/></React.Fragment>
+                        ))
+                      : (
+                          <>
+                            429/1, R.B AVENUE, Bhadreswar<br />Hooghly - 712135<br />West Bengal, India
+                          </>
+                        )}
+                  </p>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 flex-shrink-0 text-cyan-400" />
+                  <a href={`mailto:${footerData.contactInfo?.email || 'contact@zixxapp.com'}`} className="text-cyan-100/70 hover:text-cyan-300 transition-colors text-sm">
+                    {footerData.contactInfo?.email || 'contact@zixxapp.com'}
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 flex-shrink-0 text-cyan-400" />
+                  <a href={`tel:${footerData.contactInfo?.phone || '+918962231295'}`} className="text-cyan-100/70 hover:text-cyan-300 transition-colors text-sm">
+                    {footerData.contactInfo?.phone || '+91 89622 31295'}
+                  </a>
+                </div>
+              </address>
+            </div>
           </div>
-          {/* Footer Divider */}
-          <div className="border-t border-cyan-500/20 my-6"></div>
-          
-          {/* Copyright */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-cyan-100/60">
-            <div className="text-center md:text-left hover:text-cyan-100 transition-colors">
-              {footerData.copyrightText && footerData.copyrightText.length > 0
-                ? footerData.copyrightText
-                : `© ${new Date().getFullYear()} FISHMART. All rights reserved.`}
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/privacy-policy" className="hover:text-cyan-300 transition-colors">
-                Privacy Policy
-              </Link>
-              <span className="text-cyan-500/40">•</span>
-              <Link to="/terms" className="hover:text-cyan-300 transition-colors">
-                Terms of Service
-              </Link>
-              <span className="text-cyan-500/40">•</span>
-              <Link to="/shipping" className="hover:text-cyan-300 transition-colors">
-                Shipping Policy
-              </Link>
-              <span className="text-cyan-500/40">•</span>
-              <Link to="/returns" className="hover:text-cyan-300 transition-colors">
-                Returns & Refunds
-              </Link>
-            </div>
-            <div className="flex items-center gap-2 text-cyan-100/60 hover:text-cyan-100 transition-colors">
-              <span>Developed and maintained by TopStack</span>
-              {/* <span>Made with</span>
-              <span className="text-red-400">❤️</span>
-              <span>in India</span> */}
+
+          {/* Bottom Section */}
+          <div className="border-t border-cyan-500/20 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="text-center md:text-left">
+                <p className="text-cyan-100/60 text-sm">
+                  {footerData.copyrightText && footerData.copyrightText.length > 0
+                    ? footerData.copyrightText
+                    : `© ${new Date().getFullYear()} FishMart. All rights reserved.`}
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-6">
+                <Link to="/privacy-policy" className="text-cyan-100/60 hover:text-cyan-300 transition-colors text-sm">
+                  Privacy Policy
+                </Link>
+                <Link to="/terms" className="text-cyan-100/60 hover:text-cyan-300 transition-colors text-sm">
+                  Terms of Service
+                </Link>
+                <Link to="/shipping" className="text-cyan-100/60 hover:text-cyan-300 transition-colors text-sm">
+                  Shipping Policy
+                </Link>
+                <Link to="/returns" className="text-cyan-100/60 hover:text-cyan-300 transition-colors text-sm">
+                  Returns
+                </Link>
+              </div>
+              <div className="text-cyan-100/60 text-sm">
+                Made with <span className="text-red-400">♥</span> in India
+              </div>
             </div>
           </div>
         </div>
