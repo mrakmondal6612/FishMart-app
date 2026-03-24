@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
-  const rawBackend = env.VITE_BACKEND_URL ;
+  const rawBackend = env.VITE_BACKEND_URL || 'http://localhost:3000/api';
   const proxyTarget = rawBackend.replace(/\/api\/?$/, '') 
   
   return {
