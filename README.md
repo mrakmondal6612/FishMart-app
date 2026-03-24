@@ -1,18 +1,13 @@
-# Welcome to your Lovable project
-
-**Click**: https://preview--precise-pixel-perfect.lovable.app/ 
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/f380149f-d7fb-4d24-a34e-b6b18d9dfa25
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
-**Use Lovable**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f380149f-d7fb-4d24-a34e-b6b18d9dfa25) and start prompting.
+
 
 Changes made via Lovable will be committed automatically to this repo.
 
@@ -62,14 +57,6 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/f380149f-d7fb-4d24-a34e-b6b18d9dfa25) and click on Share -> Publish.
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
