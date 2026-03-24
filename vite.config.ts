@@ -4,7 +4,7 @@ import path from 'path'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_')
-  const rawBackend = env.VITE_BACKEND_URL
+  const rawBackend = env.VITE_BACKEND_URL || 'http://localhost:8282/api'
   const proxyTarget = rawBackend.replace(/\/api\/?$/, '') 
   
   return {
@@ -42,7 +42,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     server: {
-      port: parseInt(env.VITE_PORT),
+      port: parseInt(env.VITE_PORT) || 8282,
       host: "localhost",
       proxy: {
         "/api": {
